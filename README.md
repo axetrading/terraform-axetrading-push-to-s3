@@ -55,6 +55,6 @@ data "aws_s3_objects" "my_objects" {
 
 | Name | Description |
 |------|-------------|
-| <a name="output_config_bucket_name"></a> [config\_bucket\_name](#output\_config\_bucket\_name) | n/a |
-| <a name="output_config_files"></a> [config\_files](#output\_config\_files) | n/a |
+| <a name="output_config_bucket_name"></a> [config\_bucket\_name](#output\_config\_bucket\_name) | AWS S3 Bucket name where the yaml files will be stored |
+| <a name="output_config_files"></a> [config\_files](#output\_config\_files) | Configuration files keys and their URLs |
 <!-- END_TF_DOCS -->
