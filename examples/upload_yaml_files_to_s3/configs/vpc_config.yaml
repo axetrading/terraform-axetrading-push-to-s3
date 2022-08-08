@@ -1,0 +1,17 @@
+aws_account_id: 123456789012
+vpc:
+  name: your_vpc_name
+  vpc_cidr: 10.0.0.0/22
+  private_subnets_cidr:
+   - 10.0.4.0/24
+   - 10.0.5.0/24
+   - 10.0.6.0/24
+  public_subnets_cidr:
+   - 10.0.7.0/26
+   - 10.0.7.64/26
+   - 10.0.7.128/26
+  region: eu-west-2
+  azs:
+   - eu-west-2a
+   - eu-west-2b
+   - eu-west-2c

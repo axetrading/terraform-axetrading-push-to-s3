@@ -1,0 +1,8 @@
+eks:
+  cluster_name: your_eks_cluster
+  eks_subnets: 
+    - subnet_id_1
+    - subnet_id_2
+    - subnet_id_3
+  eks_private_endpoint_enabled: true
+  eks_public_endpoint_enabled: false
