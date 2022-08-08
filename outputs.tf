@@ -4,6 +4,6 @@ output "config_bucket_name" {
 }
 
 output "config_files" {
-  value       = { for k, v in aws_s3_object.config_files : k => format("%s/%s/%s", "s3://", v.bucket, v.key) }
+  value       =[ for k, v in aws_s3_object.config_files : format("%s/%s/%s", "s3://", v.bucket, v.key) ]
   description = "Configuration files keys and their URLs"
 }
