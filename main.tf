@@ -44,6 +44,7 @@ resource "aws_s3_object" "config_files" {
   bucket = aws_s3_bucket.resource_configs.id
   key    = each.value
   source = each.value
+  content_type = "text/yaml"
   etag   = filemd5(each.value)
 }
 
