@@ -60,6 +60,6 @@ resource "aws_s3_object" "outputs" {
 
   bucket       = local.existing_s3_bucket ? var.existing_s3_bucket : aws_s3_bucket.main[0].id
   key          = format("%s%s", each.key, ".yaml")
-  content      = replace(templatefile("${path.module}/templates/metadata.tftpl", { key = each.key , value = each.value }), "\"", "")
+  content      = replace(templatefile("${path.module}/templates/metadata.tftpl", { key = each.key, value = each.value }), "\"", "")
   content_type = "text/yaml"
 }
