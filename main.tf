@@ -59,7 +59,7 @@ resource "aws_s3_object" "outputs" {
   for_each = local.objects
 
   bucket       = local.existing_s3_bucket ? var.existing_s3_bucket : aws_s3_bucket.main[0].id
-  key          = format("%s-%s-%s", "terraform", each.key, ".yaml" )
+  key          = format("%s-%s-%s", "terraform", each.key, ".yaml")
   content      = replace(yamlencode(each.value), "\"", "")
   content_type = "text/yaml"
 }
