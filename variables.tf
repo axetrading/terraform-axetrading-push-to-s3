@@ -27,9 +27,10 @@ variable "existing_s3_bucket" {
   description = "Existing S3 Bucket"
   default     = null
 }
-
+### https://github.com/hashicorp/terraform/issues/26265
 variable "objects_to_push" {
-  type        = map(map(any))
+
+  type        = map(any)
   default     = {}
   description = "A list of terraform objects that will be encoded to yaml and pushed to S3"
 }
