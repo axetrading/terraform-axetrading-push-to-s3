@@ -52,7 +52,7 @@ data "aws_s3_objects" "my_objects" {
 | <a name="input_bucket_name"></a> [bucket\_name](#input\_bucket\_name) | AWS S3 Bucket name | `string` | `null` | no |
 | <a name="input_config_paths"></a> [config\_paths](#input\_config\_paths) | Path or paths for the configuration files. | `set(string)` | `[]` | no |
 | <a name="input_existing_s3_bucket"></a> [existing\_s3\_bucket](#input\_existing\_s3\_bucket) | Existing S3 Bucket | `string` | `null` | no |
-| <a name="input_objects_to_push"></a> [objects\_to\_push](#input\_objects\_to\_push) | A list of terraform objects that will be encoded to yaml and pushed to S3 | `map(any)` | `{}` | no |
+| <a name="input_objects_to_push"></a> [objects\_to\_push](#input\_objects\_to\_push) | A list of terraform objects that will be encoded to yaml and pushed to S3 | `map(map(any))` | `{}` | no |
 | <a name="input_push_files_to_s3"></a> [push\_files\_to\_s3](#input\_push\_files\_to\_s3) | Push files to S3 bucket | `bool` | `false` | no |
 | <a name="input_push_objects_to_s3"></a> [push\_objects\_to\_s3](#input\_push\_objects\_to\_s3) | Push terraform output to S3 | `bool` | `true` | no |
 
