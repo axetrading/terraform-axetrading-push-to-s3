@@ -29,7 +29,7 @@ variable "existing_s3_bucket" {
 }
 
 variable "objects_to_push" {
-  type        = any
+  type        = map(any)
   default     = {}
   description = "A list of terraform objects that will be encoded to yaml and pushed to S3"
 }
