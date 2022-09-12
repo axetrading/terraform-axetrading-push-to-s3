@@ -7,7 +7,6 @@ variable "config_paths" {
 variable "bucket_name" {
   type        = string
   description = "AWS S3 Bucket name"
-  default     = null
 }
 
 variable "push_files_to_s3" {
