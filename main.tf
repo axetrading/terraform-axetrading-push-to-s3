@@ -1,6 +1,6 @@
 locals {
-  files              = var.push_files_to_s3 ? toset(flatten([for relative_path in var.config_paths : fileset(path.root, "${relative_path}/*.yaml")])) : []
-  objects            = var.push_objects_to_s3 ? { for k, v in var.objects_to_push : k => v if var.objects_to_push != null && var.objects_to_push != {} } : {}
+  files   = var.push_files_to_s3 ? toset(flatten([for relative_path in var.config_paths : fileset(path.root, "${relative_path}/*.yaml")])) : []
+  objects = var.push_objects_to_s3 ? { for k, v in var.objects_to_push : k => v if var.objects_to_push != null && var.objects_to_push != {} } : {}
 }
 
 resource "aws_s3_bucket" "main" {
@@ -54,7 +54,7 @@ resource "aws_s3_object" "files" {
   etag         = filemd5(each.value)
 }
 
-resource "aws_s3_object" "outputs" {
+resource "aws_s3_object" "metadata" {
   for_each = local.objects
 
   bucket       = var.create_bucket ? aws_s3_bucket.main[0].id : var.bucket_name

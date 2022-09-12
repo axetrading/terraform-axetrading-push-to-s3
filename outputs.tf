@@ -9,6 +9,6 @@ output "config_files" {
 }
 
 output "metadata_objects" {
-  value = try([for k, v in aws_s3_object.metadata : format("%s/%s/%s", "s3://", v.bucket, v.key)], null)
+  value       = try([for k, v in aws_s3_object.metadata : format("%s/%s/%s", "s3://", v.bucket, v.key)], null)
   description = "Objects pushed to S3 and their URLs"
 }
