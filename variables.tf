@@ -22,10 +22,10 @@ variable "push_objects_to_s3" {
   default     = true
 }
 
-variable "existing_s3_bucket" {
-  type        = string
-  description = "Existing S3 Bucket"
-  default     = null
+variable "create_bucket" {
+  type        = bool
+  description = "Set to true to create the s3 bucket that will store the yaml files."
+  default     = false
 }
 ### https://github.com/hashicorp/terraform/issues/26265
 variable "objects_to_push" {
