@@ -49,7 +49,7 @@ data "aws_s3_objects" "my_objects" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_bucket_name"></a> [bucket\_name](#input\_bucket\_name) | AWS S3 Bucket name | `string` | `null` | no |
+| <a name="input_bucket_name"></a> [bucket\_name](#input\_bucket\_name) | AWS S3 Bucket name | `string` | n/a | yes |
 | <a name="input_config_paths"></a> [config\_paths](#input\_config\_paths) | Path or paths for the configuration files. | `set(string)` | `[]` | no |
 | <a name="input_create_bucket"></a> [create\_bucket](#input\_create\_bucket) | Set to true to create the s3 bucket that will store the yaml files. | `bool` | `false` | no |
 | <a name="input_objects_to_push"></a> [objects\_to\_push](#input\_objects\_to\_push) | A list of terraform objects that will be encoded to yaml and pushed to S3 | `map(any)` | `{}` | no |
