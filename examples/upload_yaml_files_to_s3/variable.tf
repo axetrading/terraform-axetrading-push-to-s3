@@ -3,5 +3,5 @@ variable "bucket_name" {
 }
 
 variable "config_paths" {
-  type = list
+  type = list(any)
 }

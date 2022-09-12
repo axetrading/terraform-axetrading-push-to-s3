@@ -1,9 +1,14 @@
-output "config_bucket_name" {
-  value       = aws_s3_bucket.resource_configs.id
+output "bucket_name" {
+  value       = try(aws_s3_bucket.main[0].id, null)
   description = "AWS S3 Bucket name where the yaml files will be stored"
 }
 
 output "config_files" {
-  value       = [for k, v in aws_s3_object.config_files : format("%s/%s/%s", "s3://", v.bucket, v.key)]
+  value       = try([for k, v in aws_s3_object.files : format("%s/%s/%s", "s3://", v.bucket, v.key)], null)
   description = "Configuration files keys and their URLs"
+}
+
+output "metadata_objects" {
+  value       = try([for k, v in aws_s3_object.metadata : format("%s/%s/%s", "s3://", v.bucket, v.key)], null)
+  description = "Objects pushed to S3 and their URLs"
 }
