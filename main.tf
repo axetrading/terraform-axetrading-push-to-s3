@@ -8,6 +8,13 @@ resource "aws_s3_bucket" "main" {
   bucket = var.bucket_name
 }
 
+resource "aws_s3_bucket_policy" "main" {
+  count = var.create_bucket_policy ? 1 : 0
+
+  bucket = aws_s3_bucket.main[0].id
+  policy = data.aws_iam_policy_document.all[0].json
+}
+
 resource "aws_s3_bucket_public_access_block" "main" {
   count                   = var.create_bucket ? 1 : 0
   bucket                  = aws_s3_bucket.main[0].id
