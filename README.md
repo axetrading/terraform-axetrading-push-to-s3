@@ -31,7 +31,7 @@ data "aws_s3_objects" "my_objects" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.25.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.25.0 |
 
 ## Resources
 

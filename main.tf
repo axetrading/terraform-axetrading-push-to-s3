@@ -21,6 +21,7 @@ resource "aws_s3_bucket_public_access_block" "main" {
   block_public_acls       = true
   block_public_policy     = true
   restrict_public_buckets = true
+  ignore_public_acls = true
 }
 
 resource "aws_s3_bucket_versioning" "main" {
@@ -36,7 +37,7 @@ resource "aws_s3_bucket_ownership_controls" "main" {
   bucket = aws_s3_bucket.main[0].id
 
   rule {
-    object_ownership = "BucketOwnerEnforced"
+    object_ownership = "BucketOwnerPreferred"
   }
 }
 
