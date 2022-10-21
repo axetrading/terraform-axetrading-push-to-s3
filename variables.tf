@@ -83,7 +83,7 @@ variable "restrict_public_buckets" {
 }
 
 variable "canned_acl" {
-  type = string
+  type        = string
   description = "Canned ACL to apply. Valid values are private, public-read, public-read-write, aws-exec-read, authenticated-read, bucket-owner-read, and bucket-owner-full-control"
-  default = "bucket-owner-full-control"
+  default     = "bucket-owner-full-control"
 }
