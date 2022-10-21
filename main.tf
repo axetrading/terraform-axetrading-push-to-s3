@@ -67,6 +67,7 @@ resource "aws_s3_object" "metadata" {
 
   bucket       = var.create_bucket ? aws_s3_bucket.main[0].id : var.bucket_name
   key          = format("%s%s", each.key, ".yaml")
+  acl          = var.canned_acl
   content      = replace(templatefile("${path.module}/templates/metadata.tftpl", { key = each.key, value = each.value }), "\"", "")
   content_type = "text/yaml"
 }

@@ -42,14 +42,29 @@ data "aws_iam_policy_document" "cross_account_access" {
 
     actions = [
       "s3:Get*",
-      "s3:ListBucket",
       "s3:DeleteObject",
       "s3:PutObject",
       "s3:PutObjectAcl"
     ]
 
     resources = [
-      aws_s3_bucket.main[0].arn,
+      aws_s3_bucket.main[0].arn
+    ]
+  }
+  statement {
+    principals {
+      type        = "AWS"
+      identifiers = var.external_principals
+    }
+
+    actions = [
+      "s3:Get*",
+      "s3:DeleteObject",
+      "s3:PutObject",
+      "s3:PutObjectAcl"
+    ]
+
+    resources = [
       "${aws_s3_bucket.main[0].arn}/*",
     ]
   }
