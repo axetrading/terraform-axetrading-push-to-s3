@@ -41,17 +41,6 @@ resource "aws_s3_bucket_ownership_controls" "main" {
   }
 }
 
-resource "aws_s3_bucket_server_side_encryption_configuration" "main" {
-  count  = var.create_bucket ? 1 : 0
-  bucket = aws_s3_bucket.main[0].bucket
-
-  rule {
-    apply_server_side_encryption_by_default {
-      sse_algorithm = "AES256"
-    }
-  }
-}
-
 resource "aws_s3_object" "files" {
   for_each = local.files
 
