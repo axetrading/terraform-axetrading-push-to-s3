@@ -1,6 +1,7 @@
 locals {
-  files   = var.push_files_to_s3 ? toset(flatten([for relative_path in var.config_paths : fileset(path.root, "${relative_path}/*.yaml")])) : []
-  objects = var.push_objects_to_s3 ? { for k, v in var.objects_to_push : k => v if var.objects_to_push != null && var.objects_to_push != {} } : {}
+  files       = var.push_files_to_s3 ? toset(flatten([for relative_path in var.config_paths : fileset(path.root, "${relative_path}/*.yaml")])) : []
+  objects     = var.push_objects_to_s3 ? { for k, v in var.objects_to_push : k => v if var.objects_to_push != null && var.objects_to_push != {} } : {}
+  json_files  = var.push_json_files_to_s3 ? toset(flatten([for relative_path in var.json_config_paths : fileset(path.root, "${relative_path}/*.json")])) : []
 }
 
 resource "aws_s3_bucket" "main" {
@@ -70,4 +71,15 @@ resource "aws_s3_object" "metadata" {
   acl          = var.canned_acl
   content      = replace(templatefile("${path.module}/templates/metadata.tftpl", { key = each.key, value = each.value }), "\"", "")
   content_type = "text/yaml"
+  etag         = filemd5(each.value)
+}
+
+resource "aws_s3_object" "json_files" {
+  for_each = local.json_files
+
+  bucket       = var.create_bucket ? aws_s3_bucket.main[0].id : var.bucket_name
+  key          = each.value
+  source       = each.value
+  content_type = "application/json"
+  etag         = filemd5(each.value)
 }
