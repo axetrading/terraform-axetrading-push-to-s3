@@ -64,9 +64,11 @@ data "aws_s3_objects" "my_objects" {
 | <a name="input_create_bucket_policy"></a> [create\_bucket\_policy](#input\_create\_bucket\_policy) | Wheter to create a bucket policy | `bool` | `false` | no |
 | <a name="input_external_principals"></a> [external\_principals](#input\_external\_principals) | A list of external AWS principals that should have RW access to the newly created S3 bucket | `list(string)` | `[]` | no |
 | <a name="input_ignore_public_acls"></a> [ignore\_public\_acls](#input\_ignore\_public\_acls) | Whether Amazon S3 should ignore public ACLs for this bucket. | `bool` | `true` | no |
+| <a name="input_json_config_paths"></a> [json\_config\_paths](#input\_json\_config\_paths) | Paths to the directories containing JSON files to push to S3 | `list(string)` | `[]` | no |
 | <a name="input_object_ownership"></a> [object\_ownership](#input\_object\_ownership) | Object ownership. Valid values: BucketOwnerEnforced, BucketOwnerPreferred or ObjectWriter. 'BucketOwnerEnforced': ACLs are disabled, and the bucket owner automatically owns and has full control over every object in the bucket. 'BucketOwnerPreferred': Objects uploaded to the bucket change ownership to the bucket owner if the objects are uploaded with the bucket-owner-full-control canned ACL. 'ObjectWriter': The uploading account will own the object if the object is uploaded with the bucket-owner-full-control canned ACL. | `string` | `"BucketOwnerEnforced"` | no |
 | <a name="input_objects_to_push"></a> [objects\_to\_push](#input\_objects\_to\_push) | A list of terraform objects that will be encoded to yaml and pushed to S3 | `map(any)` | `{}` | no |
 | <a name="input_push_files_to_s3"></a> [push\_files\_to\_s3](#input\_push\_files\_to\_s3) | Push files to S3 bucket | `bool` | `false` | no |
+| <a name="input_push_json_files_to_s3"></a> [push\_json\_files\_to\_s3](#input\_push\_json\_files\_to\_s3) | Whether to push JSON files to S3 | `bool` | `false` | no |
 | <a name="input_push_objects_to_s3"></a> [push\_objects\_to\_s3](#input\_push\_objects\_to\_s3) | Push terraform output to S3 | `bool` | `true` | no |
 | <a name="input_restrict_public_buckets"></a> [restrict\_public\_buckets](#input\_restrict\_public\_buckets) | Whether Amazon S3 should restrict public bucket policies for this bucket. | `bool` | `true` | no |
 
