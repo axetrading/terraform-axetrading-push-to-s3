@@ -1,7 +1,7 @@
 locals {
-  files       = var.push_files_to_s3 ? toset(flatten([for relative_path in var.config_paths : fileset(path.root, "${relative_path}/*.yaml")])) : []
-  objects     = var.push_objects_to_s3 ? { for k, v in var.objects_to_push : k => v if var.objects_to_push != null && var.objects_to_push != {} } : {}
-  json_files  = var.push_json_files_to_s3 ? toset(flatten([for relative_path in var.json_config_paths : fileset(path.root, "${relative_path}/*.json")])) : []
+  files      = var.push_files_to_s3 ? toset(flatten([for relative_path in var.config_paths : fileset(path.root, "${relative_path}/*.yaml")])) : []
+  objects    = var.push_objects_to_s3 ? { for k, v in var.objects_to_push : k => v if var.objects_to_push != null && var.objects_to_push != {} } : {}
+  json_files = var.push_json_files_to_s3 ? toset(flatten([for relative_path in var.json_config_paths : fileset(path.root, "${relative_path}/*.json")])) : []
 }
 
 resource "aws_s3_bucket" "main" {
