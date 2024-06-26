@@ -21,6 +21,19 @@ variable "push_objects_to_s3" {
   default     = true
 }
 
+variable "push_json_files_to_s3" {
+  description = "Whether to push JSON files to S3"
+  type        = bool
+  default     = false
+}
+
+variable "json_config_paths" {
+  description = "Paths to the directories containing JSON files to push to S3"
+  type        = list(string)
+  default     = []
+}
+
+
 variable "create_bucket" {
   type        = bool
   description = "Set to true to create the s3 bucket that will store the yaml files."
